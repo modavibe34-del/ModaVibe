@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="description" content="متجر ModaVibe - ملابس واكسسوارات">
+  <title>متجر ModaVibe</title>
+
+  <style>
+    :root { box-sizing: border-box; }
+    *, *::before, *::after { box-sizing: inherit; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-text-size-adjust: 100%;
+      background: #f7f7f7;
+      direction: rtl;
+      font-family: Tahoma, "Segoe UI", Roboto, sans-serif;
+      color: #222;
+    }
+    .site {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header.site-header {
+      background: #222;
+      color: #fff;
+      padding: 24px 16px;
+      text-align: center;
+    }
+    header .brand {
+      font-size: 28px;
+      font-weight: 700;
+      margin: 0;
+    }
+    header .tagline {
+      margin: 6px 0 0;
+      opacity: 0.85;
+      font-size: 14px;
+    }
+    main.site-main { flex: 1; padding: 14px; }
+    .controls {
+      display: flex;
+      gap: 8px;
+      margin: 12px 0 18px;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .controls .search { flex: 1; }
+    .controls input[type="search"] {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      outline: none;
+    }
+    .grid {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      align-items: start;
+    }
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 12px;
+      box-shadow: 0 6px 18px rgba(10,10,10,0.06);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 260px;
+    }
+    .card img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 8px;
+      display: block;
+      margin: 0 auto 10px;
+    }
+    .card h3 {
+      margin: 8px 0 6px;
+      font-size: 16px;
+    }
+    .price {
+      color: #e91e63;
+      font-weight: 700;
+      margin: 6px 0 12px;
+    }
+    .btn {
+      display: inline-block;
+      background: #e91e63;
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+    .btn.white {
+      background: #fff;
+      color: #e91e63;
+      border: 1px solid #e91e63;
+    }
+    .contact {
+      margin: 20px 0 8px;
+      background: #fff;
+      padding: 14px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    }
+    .contact label { display:block; margin-bottom:6px; font-weight:600; }
+    .contact input, .contact textarea {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      margin-bottom: 10px;
+      resize: vertical;
+    }
+    .contact .row { display:flex; gap:8px; }
+    .contact .row .col { flex: 1; }
+    footer.site-footer {
+      background: #222;
+      color: #fff;
+      text-align: center;
+      padding: 16px;
+      margin-top: 20px;
+    }
+    @media (min-width: 600px) {
+      .card img { height: 180px; }
+      .grid { gap: 16px; }
+    }
+    @media (min-width: 900px) {
+      .grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+      .card { min-height: 300px; }
+    }
+  
+  
+  .preview-btn {
+  display:inline-block;
+  margin-top:6px;
+  padding:8px 12px;
+  background:#2196F3;
+  color:#fff;
+  border-radius:6px;
+  text-decoration:none;
+  font-weight:600;
+}
+.preview-btn:hover { background:#1976D2; }
+
+/* النافذة المنبثقة */
+#previewModal {
+  display:none;
+  position:fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background:rgba(0,0,0,0.7);
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+#previewModal img {
+  max-width:90%;
+  max-height:90%;
+  border:4px solid #fff;
+  border-radius:10px;
+}
+
+  
+  
+  
+  
+  
+  </style>
+</head>
+<body>
+  <div class="site">
+    <header class="site-header">
+      <h1 class="brand">متجر ModaVibe</h1>
+      <div class="tagline">ملابس و أكسسوارات بأسعار مناسبة,مرحبا بكم! </div>
+    </header>
+
+    <main class="site-main">
+      <div class="controls">
+        <div class="search">
+          <input id="searchBox" type="search" placeholder="ابحث عن منتج...">
+        </div>
+        <div>
+          <a id="whatsFloat" class="btn" href="https://wa.me/" target="_blank">اتصل عبر واتساب</a>
+        </div>
+      </div>
+
+      <section id="products" class="grid">
+        <article class="card" data-title="تيشيرت رجالي">
+          <img loading="lazy" src="C:\Users\Hussein\Desktop\1.jpg" alt="تيشيرت رجالي">
+          <h3>تيشيرت رجالي</h3>
+          <div class="price">2500 دج</div>
+          <a class="btn" href="https://wa.me/213699554608?text=مرحباً+أريد+شراء+تيشيرت+رجالي" target="_blank">اطلب الآن</a>
+		  <div class="actions">
+            <a href="C:\Users\Hussein\Desktop\1.jpg" class="preview-btn" onclick="openPreview('C:\Users\Hussein\Desktop\1.jpg');return false;">معاينة</a>
+         </div>
+		 </article>
+
+
+
+        <article class="card" data-title="فستان صيفي">
+          <img loading="lazy" src="https://via.placeholder.com/400x300?text=فستان" alt="فستان صيفي">
+          <h3>فستان صيفي</h3>
+          <div class="price">3500 دج</div>
+          <a class="btn" href="https://wa.me/213699554608?text=مرحباً+أريد+شراء+فستان+صيفي" target="_blank">اطلب الآن</a>
+          <a href="#" class="btn" onclick="openPreview('#');return false;">معاينة</a>
+		  </article>
+
+        <article class="card" data-title="حقيبة يد">
+          <img loading="lazy" src="https://via.placeholder.com/400x300?text=حقيبة" alt="حقيبة يد">
+          <h3>حقيبة يد</h3>
+          <div class="price">1800 دج</div>
+          <a class="btn" href="https://wa.me/213699554608?text=مرحباً+أريد+شراء+حقيبة+يد" target="_blank">اطلب الآن</a>
+        </article>
+      </section>
+
+      <section class="contact" aria-label="نموذج تواصل">
+        <form id="contactForm" novalidate>
+          <label for="name">الاسم (اختياري)</label>
+          <input id="name" name="name" type="text" placeholder="الاسم">
+          <div class="row">
+            <div class="col">
+              <label for="phone">رقم الهاتف (مطلوب)</label>
+              <input id="phone" name="phone" type="tel" placeholder="مثال: 0550123456" required pattern="[0-9+ ]{6,}">
+            </div>
+            <div class="col">
+              <label for="email">البريد الإلكتروني (اختياري)</label>
+              <input id="email" name="email" type="email" placeholder="example@gmail.com">
+            </div>
+          </div>
+          <label for="message">الرسالة</label>
+          <textarea id="message" name="message" rows="3" placeholder="اكتب أي ملاحظة هنا..."></textarea>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <button type="submit" class="btn">أرسل</button>
+            <button type="button" id="clearBtn" class="btn white">مسح الحقول</button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      &copy; <span id="year"></span> جميع الحقوق محفوظة لمتجر ModaVibe
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const whatsappNumber = '213699554608';
+    document.getElementById('whatsFloat').href = 'https://wa.me/' + whatsappNumber;
+    const searchBox = document.getElementById('searchBox');
+    searchBox.addEventListener('input', function () {
+      const q = this.value.trim().toLowerCase();
+      document.querySelectorAll('#products .card').forEach(card => {
+        const title = card.dataset.title || card.querySelector('h3').textContent;
+        card.style.display = title.toLowerCase().includes(q) ? '' : 'none';
+      });
+    });
+    const form = document.getElementById('contactForm');
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  // التحقق من صحة الحقول
+  if (!form.checkValidity()) {
+    alert('الرجاء إدخال رقم هاتف صحيح قبل الإرسال.');
+    return;
+  }
+
+  // جمع البيانات
+  const name = encodeURIComponent(document.getElementById('name').value || 'بدون اسم');
+  const phone = encodeURIComponent(document.getElementById('phone').value);
+  const email = encodeURIComponent(document.getElementById('email').value || 'بدون بريد');
+  const message = encodeURIComponent(document.getElementById('message').value || 'لا توجد رسالة');
+
+  // صياغة الرسالة للواتساب
+  const text = `اسم: ${name}%0Aهاتف: ${phone}%0Aبريد: ${email}%0Aرسالة: ${message}`;
+
+  // فتح محادثة واتساب مع رقمك
+  const whatsappNumber = '213699554608'; // رقمك
+  window.open(`https://wa.me/${whatsappNumber}?text=${text}`, '_blank');
+});
+
+    document.getElementById('clearBtn').addEventListener('click', function () {
+      form.reset();
+    });
+    document.querySelectorAll('img').forEach(img => {
+      img.style.display = 'block';
+      img.style.maxWidth = '100%';
+      img.style.height = 'auto';
+    });
+  </script>
+
+
+<!-- نافذة المعاينة -->
+<div id="previewModal" onclick="closePreview()">
+  <img id="previewImage" src="">
+</div>
+
+<script>
+function openPreview(src){
+  document.getElementById('previewImage').src = src;
+  document.getElementById('previewModal').style.display = 'flex';
+}
+function closePreview(){
+  document.getElementById('previewModal').style.display = 'none';
+}
+</script>
+
+
+
+
+</body>
+</html>
