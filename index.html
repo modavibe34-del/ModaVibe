@@ -499,70 +499,31 @@ function toggleDescription(button) {
 }
 </script>
 
+<div id="orderModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>أدخل معلوماتك لإتمام الطلب</h2>
+    <form id="orderForm">
+      <input type="hidden" name="product" id="productField">
+      <input type="text" name="name" placeholder="الاسم" required>
+      <input type="text" name="surname" placeholder="اللقب" required>
+      <input type="text" name="wilaya" placeholder="الولاية" required>
+      <input type="text" name="commune" placeholder="البلدية" required>
+      <input type="tel" name="phone" placeholder="رقم الهاتف" required>
+      <input type="text" name="address" placeholder="عنوان البيت" required>
+      <label>المقاس:</label>
+      <select name="size" required>
+        <option value="">اختر</option>
+        <option value="S">S</option>
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+      </select>
+      <button type="submit">إرسال الطلب</button>
+    </form>
+  </div>
+</div>
 	
-<script>
-const orderBtn   = document.getElementById('orderBtn');
-const orderModal = document.getElementById('orderModal');
-const closeBtn   = document.querySelector('.close');
-const orderForm  = document.getElementById('orderForm');
-
-orderBtn.onclick  = () => orderModal.style.display = 'block';
-closeBtn.onclick  = () => orderModal.style.display = 'none';
-window.onclick    = e => { if (e.target === orderModal) orderModal.style.display = 'none'; };
-
-orderForm.addEventListener('submit', function(e){
-  e.preventDefault();
-  // اجمع البيانات
-  const data = new FormData(orderForm);
-  const name    = data.get('name');
-  const surname = data.get('surname');
-  const wilaya  = data.get('wilaya');
-  const commune = data.get('commune');
-  const phone   = data.get('phone');
-  const address = data.get('address');
-
-  // أنشئ رسالة واتساب
-  const msg = `طلب جديد:%0Aالاسم: ${name} ${surname}%0Aالولاية: ${wilaya}%0Aالبلدية: ${commune}%0Aالهاتف: ${phone}%0Aالعنوان: ${address}`;
-  const whatsappURL = `https://wa.me/213699554608?text=${msg}`;
-
-  // افتح الواتساب في نافذة جديدة
-  window.open(whatsappURL, '_blank');
-
-  // اشكر الزبون
-  orderForm.innerHTML = "<p>شكراً على طلبك! سيتم التواصل معك قريباً.</p>";
-});
-</script>
-
-
-<script>
-const orderBtn   = document.getElementById('orderBtn');
-const orderModal = document.getElementById('orderModal');
-const closeBtn   = document.querySelector('.close');
-const orderForm  = document.getElementById('orderForm');
-
-orderBtn.onclick  = () => orderModal.style.display = 'block';
-closeBtn.onclick  = () => orderModal.style.display = 'none';
-window.onclick    = e => { if (e.target === orderModal) orderModal.style.display = 'none'; };
-
-orderForm.addEventListener('submit', function(e){
-  e.preventDefault();
-  const data = new FormData(orderForm);
-  const name    = data.get('name');
-  const surname = data.get('surname');
-  const wilaya  = data.get('wilaya');
-  const commune = data.get('commune');
-  const phone   = data.get('phone');
-  const address = data.get('address');
-  const size    = data.get('size');   // المقاس الجديد
-
-  const msg = `طلب جديد:%0Aالاسم: ${name} ${surname}%0Aالمقاس: ${size}%0Aالولاية: ${wilaya}%0Aالبلدية: ${commune}%0Aالهاتف: ${phone}%0Aالعنوان: ${address}`;
-  const whatsappURL = `https://wa.me/213699554608?text=${msg}`;
-
-  window.open(whatsappURL, '_blank');
-
-  orderForm.innerHTML = "<p>شكراً على طلبك! سيتم التواصل معك قريباً.</p>";
-});
-</script>
 
 	
 
