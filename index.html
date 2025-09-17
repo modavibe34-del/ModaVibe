@@ -323,20 +323,23 @@ button {background:#28a745;color:#fff;border:none;border-radius:6px;}
           <!-- زر اطلب الآن -->         
 		  <a href="#" class="orderBtn btn" data-product="T-Shirt">اطلب الآن</a>
           <!-- النافذة المنبثقة -->
-          <div id="orderModal" class="modal">
-          <div class="modal-content">
-          <span class="close">&times;</span>
-          <h2>أدخل معلوماتك لإتمام الطلب</h2>
-          <form id="orderForm">
-          <input type="text" name="name" placeholder="الاسم" required>
-          <input type="text" name="surname" placeholder="اللقب" required>
-          <input type="text" name="wilaya" placeholder="الولاية" required>
-          <input type="text" name="commune" placeholder="البلدية" required>
-          <input type="tel" name="phone" placeholder="رقم الهاتف" required>
-          <input type="text" name="address" placeholder="عنوان البيت" required>
-		  <input type="hidden" name="product" id="productField">
-		  
-		  <label>المقاس:</label>
+			<div id="orderModal" class="modal">
+            <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>أدخل معلوماتك لإتمام الطلب</h2>
+
+           <form id="orderForm">
+      <!-- ✅ حقل مخفي لتخزين اسم المنتج -->
+      <input type="hidden" name="product" id="productField">
+
+      <input type="text" name="name" placeholder="الاسم" required>
+      <input type="text" name="surname" placeholder="اللقب" required>
+      <input type="text" name="wilaya" placeholder="الولاية" required>
+      <input type="text" name="commune" placeholder="البلدية" required>
+      <input type="tel" name="phone" placeholder="رقم الهاتف" required>
+      <input type="text" name="address" placeholder="عنوان البيت" required>
+
+      <label>المقاس:</label>
       <select name="size" required>
         <option value="">اختر</option>
         <option value="S">S</option>
@@ -344,11 +347,13 @@ button {background:#28a745;color:#fff;border:none;border-radius:6px;}
         <option value="L">L</option>
         <option value="XL">XL</option>
       </select>
-		  
-		  <button type="submit">إرسال الطلب</button>
-         </form>
-       </div>
-      </div>
+
+      <button type="submit">إرسال الطلب</button>
+    </form>
+  </div>
+</div>
+
+			
 	 <div class="actions">
             <a href="images/4.jpg" class="preview-btn" onclick="openPreview('images/4.jpg');return false;">معاينة</a>
      </div>
