@@ -523,62 +523,41 @@ function toggleDescription(button) {
 	
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
+const modal       = document.getElementById('orderModal');
+const closeBtn    = document.querySelector('.close');
+const orderForm   = document.getElementById('orderForm');
+const productField = document.getElementById('productField');
 
-  const modal        = document.getElementById('orderModal');   // النافذة
-  const closeBtn     = document.querySelector('.close');        // زر الإغلاق
-  const orderForm    = document.getElementById('orderForm');    // النموذج
-  const productField = document.getElementById('productField'); // الحقل المخفي لاسم المنتج
-
-  // فتح النافذة مع تخزين اسم المنتج
-  document.querySelectorAll('.orderBtn').forEach(btn => {
-    btn.addEventListener('click', function (e) {
-      e.preventDefault();
-      productField.value = btn.dataset.product; // ← اسم المنتج
-      modal.style.display = 'block';
-    });
-  });
-
-  // إغلاق النافذة
-  closeBtn.onclick  = () => modal.style.display = 'none';
-  window.onclick    = e => { if (e.target === modal) modal.style.display = 'none'; };
-
-  // عند إرسال الطلب
-  orderForm.addEventListener('submit', function (e) {
+// عند الضغط على أي زر "اطلب الآن"
+document.querySelectorAll('.orderBtn').forEach(btn => {
+  btn.addEventListener('click', e => {
     e.preventDefault();
-
-    const data = new FormData(orderForm);
-
-    const product = data.get('product'); // اسم المنتج
-    const name    = data.get('name');
-    const surname = data.get('surname');
-    const size    = data.get('size');    // المقاس
-    const wilaya  = data.get('wilaya');
-    const commune = data.get('commune');
-    const phone   = data.get('phone');
-    const address = data.get('address');
-
-    // صياغة الرسالة
-    const msg = `طلب منتج: ${product}
-الاسم: ${name} ${surname}
-المقاس: ${size}
-الولاية: ${wilaya}
-البلدية: ${commune}
-الهاتف: ${phone}
-العنوان: ${address}`;
-
-    // فتح واتساب مع الرسالة
-    window.open(
-      "https://wa.me/213699554608?text=" + encodeURIComponent(msg),
-      "_blank"
-    );
-
-    // رسالة شكر وإعادة ضبط النموذج
-    orderForm.reset();
-    modal.style.display = 'none';
-    alert("شكراً على طلبك! سيتم التواصل معك قريباً.");
+    // خزّن اسم المنتج داخل الحقل المخفي
+    productField.value = btn.dataset.product;
+    modal.style.display = 'block';
   });
+});
 
+closeBtn.onclick  = () => modal.style.display = 'none';
+window.onclick    = e => { if (e.target === modal) modal.style.display = 'none'; };
+
+orderForm.addEventListener('submit', function(e){
+  e.preventDefault();
+
+  const data = new FormData(orderForm);
+  const msg = `طلب منتج: ${data.get('product')}
+الاسم: ${data.get('name')} ${data.get('surname')}
+المقاس: ${data.get('size')}
+الولاية: ${data.get('wilaya')}
+البلدية: ${data.get('commune')}
+الهاتف: ${data.get('phone')}
+العنوان: ${data.get('address')}`;
+
+  // أرسل الطلب عبر واتساب
+  window.open("https://wa.me/213699554608?text=" + encodeURIComponent(msg), "_blank");
+
+  // رسالة شكر بعد الإرسال
+  orderForm.innerHTML = "<p>شكراً على طلبك! سيتم التواصل معك قريباً.</p>";
 });
 </script>
 
