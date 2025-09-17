@@ -320,8 +320,8 @@ button {background:#28a745;color:#fff;border:none;border-radius:6px;}
           <img loading="lazy" src="images/4.jpg" alt="T-Shirt">
           <h3>T-Shirt</h3>
           <div class="price">1000 دج</div>
-          <!-- زر اطلب الآن -->
-          <a href="#" id="orderBtn" class="btn">اطلب الآن</a>
+          <!-- زر اطلب الآن -->         
+		  <a href="#" class="orderBtn btn" data-product="T-Shirt">اطلب الآن</a>
           <!-- النافذة المنبثقة -->
           <div id="orderModal" class="modal">
           <div class="modal-content">
@@ -333,8 +333,19 @@ button {background:#28a745;color:#fff;border:none;border-radius:6px;}
           <input type="text" name="wilaya" placeholder="الولاية" required>
           <input type="text" name="commune" placeholder="البلدية" required>
           <input type="tel" name="phone" placeholder="رقم الهاتف" required>
-          <input type="text" name="address" placeholder="عنوان البيت" required> 
-		<button type="submit">إرسال الطلب</button>
+          <input type="text" name="address" placeholder="عنوان البيت" required>
+		  <input type="hidden" name="product" id="productField">
+		  
+		  <label>المقاس:</label>
+      <select name="size" required>
+        <option value="">اختر</option>
+        <option value="S">S</option>
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+      </select>
+		  
+		  <button type="submit">إرسال الطلب</button>
          </form>
        </div>
       </div>
@@ -355,12 +366,12 @@ button {background:#28a745;color:#fff;border:none;border-radius:6px;}
 
 
           
-<article class="card" data-title="Short">
-          <img loading="lazy" src="images/2.jpg" alt="Short">
-          <h3>Short</h3>
+<article class="card" data-title="T-Shirt">
+          <img loading="lazy" src="images/2.jpg" alt="T-Shirt">
+          <h3>T-Shirt</h3>
           <div class="price">1000 دج</div>
-          <!-- زر اطلب الآن -->
-          <a href="#" id="orderBtn" class="btn">اطلب الآن</a>
+          <!-- زر اطلب الآن -->         
+		  <a href="#" class="orderBtn btn" data-product="T-Shirt">اطلب الآن</a>
           <!-- النافذة المنبثقة -->
           <div id="orderModal" class="modal">
           <div class="modal-content">
@@ -373,7 +384,18 @@ button {background:#28a745;color:#fff;border:none;border-radius:6px;}
           <input type="text" name="commune" placeholder="البلدية" required>
           <input type="tel" name="phone" placeholder="رقم الهاتف" required>
           <input type="text" name="address" placeholder="عنوان البيت" required>
-		 <button type="submit">إرسال الطلب</button>
+		  <input type="hidden" name="product" id="productField">
+		  
+		  <label>المقاس:</label>
+      <select name="size" required>
+        <option value="">اختر</option>
+        <option value="S">S</option>
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+      </select>
+		  
+		  <button type="submit">إرسال الطلب</button>
          </form>
        </div>
       </div>
