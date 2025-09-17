@@ -313,12 +313,15 @@ button {background:#28a745;color:#fff;border:none;border-radius:6px;}
 
       <section id="products" class="grid">
 
-<article class="card" data-title="T-Shirt">
+
+      
+    
+		<article class="card" data-title="T-Shirt">
           <img loading="lazy" src="images/4.jpg" alt="T-Shirt">
           <h3>T-Shirt</h3>
           <div class="price">1000 دج</div>
           <!-- زر اطلب الآن -->
-          <a href="#" class="orderBtn btn" data-product="T-Shirt">اطلب الآن</a>
+          <a href="#" id="orderBtn" class="btn">اطلب الآن</a>
           <!-- النافذة المنبثقة -->
           <div id="orderModal" class="modal">
           <div class="modal-content">
@@ -331,7 +334,6 @@ button {background:#28a745;color:#fff;border:none;border-radius:6px;}
           <input type="text" name="commune" placeholder="البلدية" required>
           <input type="tel" name="phone" placeholder="رقم الهاتف" required>
           <input type="text" name="address" placeholder="عنوان البيت" required>
-		  <input type="hidden" name="product" id="productField">
 			  <button type="submit">إرسال الطلب</button>
          </form>
        </div>
@@ -349,6 +351,47 @@ button {background:#28a745;color:#fff;border:none;border-radius:6px;}
     </div>
 	
 	</article>
+
+
+
+          
+<article class="card" data-title="Short">
+          <img loading="lazy" src="images/2.jpg" alt="Short">
+          <h3>Short</h3>
+          <div class="price">1000 دج</div>
+          <!-- زر اطلب الآن -->
+          <a href="#" id="orderBtn" class="btn">اطلب الآن</a>
+          <!-- النافذة المنبثقة -->
+          <div id="orderModal" class="modal">
+          <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>أدخل معلوماتك لإتمام الطلب</h2>
+          <form id="orderForm">
+          <input type="text" name="name" placeholder="الاسم" required>
+          <input type="text" name="surname" placeholder="اللقب" required>
+          <input type="text" name="wilaya" placeholder="الولاية" required>
+          <input type="text" name="commune" placeholder="البلدية" required>
+          <input type="tel" name="phone" placeholder="رقم الهاتف" required>
+          <input type="text" name="address" placeholder="عنوان البيت" required>
+			  <button type="submit">إرسال الطلب</button>
+         </form>
+       </div>
+      </div>
+	 <div class="actions">
+            <a href="images/2.jpg" class="preview-btn" onclick="openPreview('images/2.jpg');return false;">معاينة</a>
+     </div>
+		   <!-- زر إظهار الوصف -->
+    <button herf="#" class="dscr-btn" onclick="toggleDescription(this)">
+      وصف المنتج
+    </button>
+    <!-- الوصف المخفي -->
+    <div class="product-description hidden">
+      قماش قطني 100٪، تصميم عصري مريح، متوفر بمقاسات S-XL.
+    </div>
+	
+	</article>
+
+
 		  
        
       </section>
@@ -454,47 +497,73 @@ function toggleDescription(button) {
     ? 'وصف المنتج' 
     : 'إخفاء الوصف';
 }
+</script>
 
-
+	
 <script>
-const modal       = document.getElementById('orderModal');
-const closeBtn    = document.querySelector('.close');
-const orderForm   = document.getElementById('orderForm');
-const productField = document.getElementById('productField');
+const orderBtn   = document.getElementById('orderBtn');
+const orderModal = document.getElementById('orderModal');
+const closeBtn   = document.querySelector('.close');
+const orderForm  = document.getElementById('orderForm');
 
-// عند الضغط على أي زر "اطلب الآن"
-document.querySelectorAll('.orderBtn').forEach(btn => {
-  btn.addEventListener('click', e => {
-    e.preventDefault();
-    // خزّن اسم المنتج داخل الحقل المخفي
-    productField.value = btn.dataset.product;
-    modal.style.display = 'block';
-  });
-});
-
-closeBtn.onclick  = () => modal.style.display = 'none';
-window.onclick    = e => { if (e.target === modal) modal.style.display = 'none'; };
+orderBtn.onclick  = () => orderModal.style.display = 'block';
+closeBtn.onclick  = () => orderModal.style.display = 'none';
+window.onclick    = e => { if (e.target === orderModal) orderModal.style.display = 'none'; };
 
 orderForm.addEventListener('submit', function(e){
   e.preventDefault();
-
+  // اجمع البيانات
   const data = new FormData(orderForm);
-  const msg = `طلب منتج: ${data.get('product')}
-الاسم: ${data.get('name')} ${data.get('surname')}
-المقاس: ${data.get('size')}
-الولاية: ${data.get('wilaya')}
-البلدية: ${data.get('commune')}
-الهاتف: ${data.get('phone')}
-العنوان: ${data.get('address')}`;
+  const name    = data.get('name');
+  const surname = data.get('surname');
+  const wilaya  = data.get('wilaya');
+  const commune = data.get('commune');
+  const phone   = data.get('phone');
+  const address = data.get('address');
 
-  // أرسل الطلب عبر واتساب
-  window.open("https://wa.me/213699554608?text=" + encodeURIComponent(msg), "_blank");
+  // أنشئ رسالة واتساب
+  const msg = `طلب جديد:%0Aالاسم: ${name} ${surname}%0Aالولاية: ${wilaya}%0Aالبلدية: ${commune}%0Aالهاتف: ${phone}%0Aالعنوان: ${address}`;
+  const whatsappURL = `https://wa.me/213699554608?text=${msg}`;
 
-  // رسالة شكر بعد الإرسال
+  // افتح الواتساب في نافذة جديدة
+  window.open(whatsappURL, '_blank');
+
+  // اشكر الزبون
   orderForm.innerHTML = "<p>شكراً على طلبك! سيتم التواصل معك قريباً.</p>";
 });
 </script>
-	
+
+
+<script>
+const orderBtn   = document.getElementById('orderBtn');
+const orderModal = document.getElementById('orderModal');
+const closeBtn   = document.querySelector('.close');
+const orderForm  = document.getElementById('orderForm');
+
+orderBtn.onclick  = () => orderModal.style.display = 'block';
+closeBtn.onclick  = () => orderModal.style.display = 'none';
+window.onclick    = e => { if (e.target === orderModal) orderModal.style.display = 'none'; };
+
+orderForm.addEventListener('submit', function(e){
+  e.preventDefault();
+  const data = new FormData(orderForm);
+  const name    = data.get('name');
+  const surname = data.get('surname');
+  const wilaya  = data.get('wilaya');
+  const commune = data.get('commune');
+  const phone   = data.get('phone');
+  const address = data.get('address');
+  const size    = data.get('size');   // المقاس الجديد
+
+  const msg = `طلب جديد:%0Aالاسم: ${name} ${surname}%0Aالمقاس: ${size}%0Aالولاية: ${wilaya}%0Aالبلدية: ${commune}%0Aالهاتف: ${phone}%0Aالعنوان: ${address}`;
+  const whatsappURL = `https://wa.me/213699554608?text=${msg}`;
+
+  window.open(whatsappURL, '_blank');
+
+  orderForm.innerHTML = "<p>شكراً على طلبك! سيتم التواصل معك قريباً.</p>";
+});
+</script>
+
 	
 
 </body>
