@@ -259,7 +259,38 @@ input, button {
 }
 button {background:#28a745;color:#fff;border:none;border-radius:6px;}
 	  
-  
+
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+}
+.modal-content {
+  background: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  max-width: 400px;
+  border-radius: 12px;
+  text-align: right;
+  direction: rtl;
+}
+.close {
+  float: left;
+  font-size: 24px;
+  cursor: pointer;
+}
+input, select, button {
+  width: 100%;
+  padding: 10px;
+  margin: 6px 0;
+  box-sizing: border-box;
+}
+button {background:#28a745;color:#fff;border:none;border-radius:6px;}
+	  
   
   </style>
 </head>
@@ -516,6 +547,37 @@ orderForm.addEventListener('submit', function(e){
   window.open(whatsappURL, '_blank');
 
   // اشكر الزبون
+  orderForm.innerHTML = "<p>شكراً على طلبك! سيتم التواصل معك قريباً.</p>";
+});
+</script>
+
+
+<script>
+const orderBtn   = document.getElementById('orderBtn');
+const orderModal = document.getElementById('orderModal');
+const closeBtn   = document.querySelector('.close');
+const orderForm  = document.getElementById('orderForm');
+
+orderBtn.onclick  = () => orderModal.style.display = 'block';
+closeBtn.onclick  = () => orderModal.style.display = 'none';
+window.onclick    = e => { if (e.target === orderModal) orderModal.style.display = 'none'; };
+
+orderForm.addEventListener('submit', function(e){
+  e.preventDefault();
+  const data = new FormData(orderForm);
+  const name    = data.get('name');
+  const surname = data.get('surname');
+  const wilaya  = data.get('wilaya');
+  const commune = data.get('commune');
+  const phone   = data.get('phone');
+  const address = data.get('address');
+  const size    = data.get('size');   // المقاس الجديد
+
+  const msg = `طلب جديد:%0Aالاسم: ${name} ${surname}%0Aالمقاس: ${size}%0Aالولاية: ${wilaya}%0Aالبلدية: ${commune}%0Aالهاتف: ${phone}%0Aالعنوان: ${address}`;
+  const whatsappURL = `https://wa.me/213699554608?text=${msg}`;
+
+  window.open(whatsappURL, '_blank');
+
   orderForm.innerHTML = "<p>شكراً على طلبك! سيتم التواصل معك قريباً.</p>";
 });
 </script>
