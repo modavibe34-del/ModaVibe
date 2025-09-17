@@ -227,7 +227,38 @@
   display: none;
 }
 
-  
+
+/* تنسيقات بسيطة للنافذة */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+}
+.modal-content {
+  background: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  max-width: 400px;
+  border-radius: 12px;
+  text-align: right;
+  direction: rtl;
+}
+.close {
+  float: left;
+  font-size: 24px;
+  cursor: pointer;
+}
+input, button {
+  width: 100%;
+  padding: 10px;
+  margin: 6px 0;
+  box-sizing: border-box;
+}
+button {background:#28a745;color:#fff;border:none;border-radius:6px;}
+	  
   
   
   </style>
@@ -255,42 +286,44 @@
       
     
 		<article class="card" data-title="T-Shirt">
-          <img loading="lazy" src="images/4.jpg" alt="Tshirt">
+          <img loading="lazy" src="images/2.jpg" alt="T-Shirt">
           <h3>T-Shirt</h3>
           <div class="price">1000 دج</div>
-          <a class="btn" href="https://wa.me/213699554608?text=مرحباً+أريد+شراء+تيشيرت+رجالي" target="_blank">اطلب الآن</a>
-		  <div class="actions">
-            <a href="images/4.jpg" class="preview-btn" onclick="openPreview('images/4.jpg');return false;">معاينة</a>
-          </div>
-			<button class="desc-btn" onclick="toggleDescription(this)">
-      وصف المنتج
-    </button>
-
-    <!-- الوصف المخفي -->
-    <div class="product-description hidden">
-      تيشرت عريض قطني 100% رائع مناسب لفصل الصيف!
-    </div>
-		 </article>
-
-
-
-          <article class="card" data-title="Short Bleu">
-          <img loading="lazy" src="images/2.jpg" alt="Short Bleu">
-          <h3>Short Bleu</h3>
-          <div class="price">500 دج</div>
-          <a class="btn" href="https://wa.me/213699554608?text=مرحباً+أريد+شراء+Short+Bleu" target="_blank">اطلب الآن</a>
-		  <div class="actions">
+          <!-- زر اطلب الآن -->
+          <a href="#" id="orderBtn" class="btn">اطلب الآن</a>
+          <!-- النافذة المنبثقة -->
+          <div id="orderModal" class="modal">
+          <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>أدخل معلوماتك لإتمام الطلب</h2>
+          <form id="orderForm">
+          <input type="text" name="name" placeholder="الاسم" required>
+          <input type="text" name="surname" placeholder="اللقب" required>
+          <input type="text" name="wilaya" placeholder="الولاية" required>
+          <input type="text" name="commune" placeholder="البلدية" required>
+          <input type="tel" name="phone" placeholder="رقم الهاتف" required>
+          <input type="text" name="address" placeholder="عنوان البيت" required>
+          <button type="submit">إرسال الطلب</button>
+         </form>
+       </div>
+      </div>
+	 <div class="actions">
             <a href="images/2.jpg" class="preview-btn" onclick="openPreview('images/2.jpg');return false;">معاينة</a>
-          </div>
-			  <button class="desc-btn" onclick="toggleDescription(this)">
+     </div>
+		   <!-- زر إظهار الوصف -->
+    <button herf="#" class="dscr-btn" onclick="toggleDescription(this)">
       وصف المنتج
     </button>
-
     <!-- الوصف المخفي -->
     <div class="product-description hidden">
-      شورت عريض ومريح وقطني 100% مناسب لفصل الصيف!
+      قماش قطني 100٪، تصميم عصري مريح، متوفر بمقاسات S-XL.
     </div>
-		 </article>
+	
+	</article>
+
+
+
+          
 
 
 
@@ -402,7 +435,40 @@ function toggleDescription(button) {
 </script>
 
 	
+<script>
+const orderBtn   = document.getElementById('orderBtn');
+const orderModal = document.getElementById('orderModal');
+const closeBtn   = document.querySelector('.close');
+const orderForm  = document.getElementById('orderForm');
 
+orderBtn.onclick  = () => orderModal.style.display = 'block';
+closeBtn.onclick  = () => orderModal.style.display = 'none';
+window.onclick    = e => { if (e.target === orderModal) orderModal.style.display = 'none'; };
+
+orderForm.addEventListener('submit', function(e){
+  e.preventDefault();
+  // اجمع البيانات
+  const data = new FormData(orderForm);
+  const name    = data.get('name');
+  const surname = data.get('surname');
+  const wilaya  = data.get('wilaya');
+  const commune = data.get('commune');
+  const phone   = data.get('phone');
+  const address = data.get('address');
+
+  // أنشئ رسالة واتساب
+  const msg = `طلب جديد:%0Aالاسم: ${name} ${surname}%0Aالولاية: ${wilaya}%0Aالبلدية: ${commune}%0Aالهاتف: ${phone}%0Aالعنوان: ${address}`;
+  const whatsappURL = `https://wa.me/213699554608?text=${msg}`;
+
+  // افتح الواتساب في نافذة جديدة
+  window.open(whatsappURL, '_blank');
+
+  // اشكر الزبون
+  orderForm.innerHTML = "<p>شكراً على طلبك! سيتم التواصل معك قريباً.</p>";
+});
+</script>
+
+	
 
 </body>
 </html>
