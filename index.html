@@ -286,8 +286,47 @@ button {background:#28a745;color:#fff;border:none;border-radius:6px;}
       
     
 		<article class="card" data-title="T-Shirt">
-          <img loading="lazy" src="images/2.jpg" alt="T-Shirt">
+          <img loading="lazy" src="images/4.jpg" alt="T-Shirt">
           <h3>T-Shirt</h3>
+          <div class="price">1000 دج</div>
+          <!-- زر اطلب الآن -->
+          <a href="#" id="orderBtn" class="btn">اطلب الآن</a>
+          <!-- النافذة المنبثقة -->
+          <div id="orderModal" class="modal">
+          <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>أدخل معلوماتك لإتمام الطلب</h2>
+          <form id="orderForm">
+          <input type="text" name="name" placeholder="الاسم" required>
+          <input type="text" name="surname" placeholder="اللقب" required>
+          <input type="text" name="wilaya" placeholder="الولاية" required>
+          <input type="text" name="commune" placeholder="البلدية" required>
+          <input type="tel" name="phone" placeholder="رقم الهاتف" required>
+          <input type="text" name="address" placeholder="عنوان البيت" required>
+          <button type="submit">إرسال الطلب</button>
+         </form>
+       </div>
+      </div>
+	 <div class="actions">
+            <a href="images/4.jpg" class="preview-btn" onclick="openPreview('images/4.jpg');return false;">معاينة</a>
+     </div>
+		   <!-- زر إظهار الوصف -->
+    <button herf="#" class="dscr-btn" onclick="toggleDescription(this)">
+      وصف المنتج
+    </button>
+    <!-- الوصف المخفي -->
+    <div class="product-description hidden">
+      قماش قطني 100٪، تصميم عصري مريح، متوفر بمقاسات S-XL.
+    </div>
+	
+	</article>
+
+
+
+          
+<article class="card" data-title="Short">
+          <img loading="lazy" src="images/2.jpg" alt="Short">
+          <h3>Short</h3>
           <div class="price">1000 دج</div>
           <!-- زر اطلب الآن -->
           <a href="#" id="orderBtn" class="btn">اطلب الآن</a>
@@ -320,11 +359,6 @@ button {background:#28a745;color:#fff;border:none;border-radius:6px;}
     </div>
 	
 	</article>
-
-
-
-          
-
 
 
 		  
