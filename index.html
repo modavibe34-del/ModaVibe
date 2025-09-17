@@ -1,12 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="ar">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <meta name="description" content="متجر ModaVibe - ملابس واكسسوارات">
-  <title>متجر ModaVibe</title>
-
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<meta content="متجر ModaVibe - ملابس واكسسوارات" name="description"/>
+<title>متجر ModaVibe</title>
+<style>
     :root { box-sizing: border-box; }
     *, *::before, *::after { box-sizing: inherit; }
     html, body {
@@ -295,137 +295,90 @@ button {background:#28a745;color:#fff;border:none;border-radius:6px;}
   </style>
 </head>
 <body>
-  <div class="site">
-    <header class="site-header">
-      <h1 class="brand">متجر ModaVibe</h1>
-      <div class="tagline">ملابس و أكسسوارات بأسعار مناسبة,مرحبا بكم! </div>
-    </header>
+<div class="site">
+<header class="site-header">
+<h1 class="brand">متجر ModaVibe</h1>
+<div class="tagline">ملابس و أكسسوارات بأسعار مناسبة,مرحبا بكم! </div>
+</header>
+<main class="site-main">
+<div class="controls">
+<div class="search">
+<input id="searchBox" placeholder="ابحث عن منتج..." type="search"/>
+</div>
+<div>
+<a class="btn" href="https://wa.me/" id="whatsFloat" target="_blank">اتصل عبر واتساب</a>
+</div>
+</div>
+<section class="grid" id="products">
+<article class="card" data-title="T-Shirt">
+<img alt="T-Shirt" loading="lazy" src="images/4.jpg"/>
+<h3>T-Shirt</h3>
+<div class="price">1000 دج</div>
+<!-- زر اطلب الآن -->
+<a class="btn orderBtn" data-product="T-Shirt" href="#">اطلب الآن</a>
+<!-- النافذة المنبثقة -->
 
-    <main class="site-main">
-      <div class="controls">
-        <div class="search">
-          <input id="searchBox" type="search" placeholder="ابحث عن منتج...">
-        </div>
-        <div>
-          <a id="whatsFloat" class="btn" href="https://wa.me/" target="_blank">اتصل عبر واتساب</a>
-        </div>
-      </div>
-
-      <section id="products" class="grid">
-
-
-      
-    
-		<article class="card" data-title="T-Shirt">
-          <img loading="lazy" src="images/4.jpg" alt="T-Shirt">
-          <h3>T-Shirt</h3>
-          <div class="price">1000 دج</div>
-          <!-- زر اطلب الآن -->
-          <a href="#" id="orderBtn" class="btn">اطلب الآن</a>
-          <!-- النافذة المنبثقة -->
-          <div id="orderModal" class="modal">
-          <div class="modal-content">
-          <span class="close">&times;</span>
-          <h2>أدخل معلوماتك لإتمام الطلب</h2>
-          <form id="orderForm">
-          <input type="text" name="name" placeholder="الاسم" required>
-          <input type="text" name="surname" placeholder="اللقب" required>
-          <input type="text" name="wilaya" placeholder="الولاية" required>
-          <input type="text" name="commune" placeholder="البلدية" required>
-          <input type="tel" name="phone" placeholder="رقم الهاتف" required>
-          <input type="text" name="address" placeholder="عنوان البيت" required>
-			  <button type="submit">إرسال الطلب</button>
-         </form>
-       </div>
-      </div>
-	 <div class="actions">
-            <a href="images/4.jpg" class="preview-btn" onclick="openPreview('images/4.jpg');return false;">معاينة</a>
-     </div>
-		   <!-- زر إظهار الوصف -->
-    <button herf="#" class="dscr-btn" onclick="toggleDescription(this)">
+<div class="actions">
+<a class="preview-btn" href="images/4.jpg" onclick="openPreview('images/4.jpg');return false;">معاينة</a>
+</div>
+<!-- زر إظهار الوصف -->
+<button class="dscr-btn" herf="#" onclick="toggleDescription(this)">
       وصف المنتج
     </button>
-    <!-- الوصف المخفي -->
-    <div class="product-description hidden">
+<!-- الوصف المخفي -->
+<div class="product-description hidden">
       قماش قطني 100٪، تصميم عصري مريح، متوفر بمقاسات S-XL.
     </div>
-	
-	</article>
-
-
-
-          
+</article>
 <article class="card" data-title="Short">
-          <img loading="lazy" src="images/2.jpg" alt="Short">
-          <h3>Short</h3>
-          <div class="price">1000 دج</div>
-          <!-- زر اطلب الآن -->
-          <a href="#" id="orderBtn" class="btn">اطلب الآن</a>
-          <!-- النافذة المنبثقة -->
-          <div id="orderModal" class="modal">
-          <div class="modal-content">
-          <span class="close">&times;</span>
-          <h2>أدخل معلوماتك لإتمام الطلب</h2>
-          <form id="orderForm">
-          <input type="text" name="name" placeholder="الاسم" required>
-          <input type="text" name="surname" placeholder="اللقب" required>
-          <input type="text" name="wilaya" placeholder="الولاية" required>
-          <input type="text" name="commune" placeholder="البلدية" required>
-          <input type="tel" name="phone" placeholder="رقم الهاتف" required>
-          <input type="text" name="address" placeholder="عنوان البيت" required>
-			  <button type="submit">إرسال الطلب</button>
-         </form>
-       </div>
-      </div>
-	 <div class="actions">
-            <a href="images/2.jpg" class="preview-btn" onclick="openPreview('images/2.jpg');return false;">معاينة</a>
-     </div>
-		   <!-- زر إظهار الوصف -->
-    <button herf="#" class="dscr-btn" onclick="toggleDescription(this)">
+<img alt="Short" loading="lazy" src="images/2.jpg"/>
+<h3>Short</h3>
+<div class="price">1000 دج</div>
+<!-- زر اطلب الآن -->
+<a class="btn orderBtn" data-product="Short" href="#">اطلب الآن</a>
+<!-- النافذة المنبثقة -->
+
+<div class="actions">
+<a class="preview-btn" href="images/2.jpg" onclick="openPreview('images/2.jpg');return false;">معاينة</a>
+</div>
+<!-- زر إظهار الوصف -->
+<button class="dscr-btn" herf="#" onclick="toggleDescription(this)">
       وصف المنتج
     </button>
-    <!-- الوصف المخفي -->
-    <div class="product-description hidden">
+<!-- الوصف المخفي -->
+<div class="product-description hidden">
       قماش قطني 100٪، تصميم عصري مريح، متوفر بمقاسات S-XL.
     </div>
-	
-	</article>
-
-
-		  
-       
-      </section>
-
-      <section class="contact" aria-label="نموذج تواصل">
-        <form id="contactForm" novalidate>
-          <label for="name">الاسم (اجباري)</label>
-          <input id="name" name="name" type="text" placeholder="الاسم">
-          <div class="row">
-            <div class="col">
-              <label for="phone">رقم الهاتف (مطلوب)</label>
-              <input id="phone" name="phone" type="tel" placeholder="مثال: 0550123456" required pattern="[0-9+ ]{6,}">
-            </div>
-            <div class="col">
-              <label for="email">البريد الإلكتروني (اجباري)</label>
-              <input id="email" name="email" type="email" placeholder="example@gmail.com">
-            </div>
-          </div>
-          <label for="message">الرسالة</label>
-          <textarea id="message" name="message" rows="3" placeholder="اكتب أي ملاحظة هنا..."></textarea>
-          <div style="display:flex;gap:8px;flex-wrap:wrap;">
-            <button type="submit" class="btn">أرسل</button>
-            <button type="button" id="clearBtn" class="btn white">مسح الحقول</button>
-          </div>
-        </form>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      &copy; <span id="year"></span> جميع الحقوق محفوظة لمتجر ModaVibe
+</article>
+</section>
+<section aria-label="نموذج تواصل" class="contact">
+<form id="contactForm" novalidate="">
+<label for="name">الاسم (اجباري)</label>
+<input id="name" name="name" placeholder="الاسم" type="text"/>
+<div class="row">
+<div class="col">
+<label for="phone">رقم الهاتف (مطلوب)</label>
+<input id="phone" name="phone" pattern="[0-9+ ]{6,}" placeholder="مثال: 0550123456" required="" type="tel"/>
+</div>
+<div class="col">
+<label for="email">البريد الإلكتروني (اجباري)</label>
+<input id="email" name="email" placeholder="example@gmail.com" type="email"/>
+</div>
+</div>
+<label for="message">الرسالة</label>
+<textarea id="message" name="message" placeholder="اكتب أي ملاحظة هنا..." rows="3"></textarea>
+<div style="display:flex;gap:8px;flex-wrap:wrap;">
+<button class="btn" type="submit">أرسل</button>
+<button class="btn white" id="clearBtn" type="button">مسح الحقول</button>
+</div>
+</form>
+</section>
+</main>
+<footer class="site-footer">
+      © <span id="year"></span> جميع الحقوق محفوظة لمتجر ModaVibe
     </footer>
-  </div>
-
-  <script>
+</div>
+<script>
     document.getElementById('year').textContent = new Date().getFullYear();
     const whatsappNumber = '213699554608';
     document.getElementById('whatsFloat').href = 'https://wa.me/' + whatsappNumber;
@@ -470,13 +423,10 @@ form.addEventListener('submit', function (e) {
       img.style.height = 'auto';
     });
   </script>
-
-
 <!-- نافذة المعاينة -->
 <div id="previewModal" onclick="closePreview()">
-  <img id="previewImage" src="">
+<img id="previewImage" src=""/>
 </div>
-
 <script>
 function openPreview(src){
   document.getElementById('previewImage').src = src;
@@ -486,9 +436,6 @@ function closePreview(){
   document.getElementById('previewModal').style.display = 'none';
 }
 </script>
-
-
-
 <script>
 function toggleDescription(button) {
   const desc = button.nextElementSibling;
@@ -499,72 +446,67 @@ function toggleDescription(button) {
 }
 </script>
 
-	
-<script>
-const orderBtn   = document.getElementById('orderBtn');
-const orderModal = document.getElementById('orderModal');
-const closeBtn   = document.querySelector('.close');
-const orderForm  = document.getElementById('orderForm');
 
-orderBtn.onclick  = () => orderModal.style.display = 'block';
-closeBtn.onclick  = () => orderModal.style.display = 'none';
-window.onclick    = e => { if (e.target === orderModal) orderModal.style.display = 'none'; };
 
-orderForm.addEventListener('submit', function(e){
-  e.preventDefault();
-  // اجمع البيانات
-  const data = new FormData(orderForm);
-  const name    = data.get('name');
-  const surname = data.get('surname');
-  const wilaya  = data.get('wilaya');
-  const commune = data.get('commune');
-  const phone   = data.get('phone');
-  const address = data.get('address');
-
-  // أنشئ رسالة واتساب
-  const msg = `طلب جديد:%0Aالاسم: ${name} ${surname}%0Aالولاية: ${wilaya}%0Aالبلدية: ${commune}%0Aالهاتف: ${phone}%0Aالعنوان: ${address}`;
-  const whatsappURL = `https://wa.me/213699554608?text=${msg}`;
-
-  // افتح الواتساب في نافذة جديدة
-  window.open(whatsappURL, '_blank');
-
-  // اشكر الزبون
-  orderForm.innerHTML = "<p>شكراً على طلبك! سيتم التواصل معك قريباً.</p>";
-});
-</script>
-
+<div class="modal" id="orderModal">
+<div class="modal-content">
+<span class="close">×</span>
+<h2>أدخل معلوماتك لإتمام الطلب</h2>
+<form id="orderForm">
+<input id="productField" name="product" type="hidden"/>
+<input name="name" placeholder="الاسم" required="" type="text"/>
+<input name="surname" placeholder="اللقب" required="" type="text"/>
+<input name="wilaya" placeholder="الولاية" required="" type="text"/>
+<input name="commune" placeholder="البلدية" required="" type="text"/>
+<input name="phone" placeholder="رقم الهاتف" required="" type="tel"/>
+<input name="address" placeholder="عنوان البيت" required="" type="text"/>
+<label>المقاس:</label>
+<select name="size" required="">
+<option value="">اختر</option>
+<option value="S">S</option>
+<option value="M">M</option>
+<option value="L">L</option>
+<option value="XL">XL</option>
+</select>
+<button type="submit">إرسال الطلب</button>
+</form>
+</div>
+</div>
 
 <script>
-const orderBtn   = document.getElementById('orderBtn');
-const orderModal = document.getElementById('orderModal');
-const closeBtn   = document.querySelector('.close');
-const orderForm  = document.getElementById('orderForm');
+document.addEventListener("DOMContentLoaded", function () {
+  const modal        = document.getElementById('orderModal');
+  const closeBtn     = document.querySelector('#orderModal .close');
+  const orderForm    = document.getElementById('orderForm');
+  const productField = document.getElementById('productField');
 
-orderBtn.onclick  = () => orderModal.style.display = 'block';
-closeBtn.onclick  = () => orderModal.style.display = 'none';
-window.onclick    = e => { if (e.target === orderModal) orderModal.style.display = 'none'; };
+  document.querySelectorAll('.orderBtn').forEach(btn => {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      productField.value = btn.dataset.product;
+      modal.style.display = 'block';
+    });
+  });
 
-orderForm.addEventListener('submit', function(e){
-  e.preventDefault();
-  const data = new FormData(orderForm);
-  const name    = data.get('name');
-  const surname = data.get('surname');
-  const wilaya  = data.get('wilaya');
-  const commune = data.get('commune');
-  const phone   = data.get('phone');
-  const address = data.get('address');
-  const size    = data.get('size');   // المقاس الجديد
+  closeBtn.onclick  = () => modal.style.display = 'none';
+  window.onclick    = e => { if (e.target === modal) modal.style.display = 'none'; };
 
-  const msg = `طلب جديد:%0Aالاسم: ${name} ${surname}%0Aالمقاس: ${size}%0Aالولاية: ${wilaya}%0Aالبلدية: ${commune}%0Aالهاتف: ${phone}%0Aالعنوان: ${address}`;
-  const whatsappURL = `https://wa.me/213699554608?text=${msg}`;
-
-  window.open(whatsappURL, '_blank');
-
-  orderForm.innerHTML = "<p>شكراً على طلبك! سيتم التواصل معك قريباً.</p>";
+  orderForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const data = new FormData(orderForm);
+    const msg = `طلب منتج: ${data.get('product')}
+الاسم: ${data.get('name')} ${data.get('surname')}
+المقاس: ${data.get('size')}
+الولاية: ${data.get('wilaya')}
+البلدية: ${data.get('commune')}
+الهاتف: ${data.get('phone')}
+العنوان: ${data.get('address')}`;
+    window.open("https://wa.me/213699554608?text=" + encodeURIComponent(msg), "_blank");
+    orderForm.reset();
+    modal.style.display = 'none';
+    alert("شكراً على طلبك! سيتم التواصل معك قريباً.");
+  });
 });
 </script>
-
-	
-
 </body>
 </html>
